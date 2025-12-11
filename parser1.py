@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.common.exceptions import NoSuchElementException
-
+import os as os
 all_casinos = []
 
 options = webdriver.ChromeOptions()
@@ -85,6 +85,6 @@ if all_casinos:
 
     print(f"\nВСЬОГО УНІКАЛЬНИХ: {len(df)}")
     print(df.head(10))
-    df.to_csv('all_casinos_combined.csv', index=False)
+    df.to_csv('all_casinos_combined.csv', mode='a', header=not os.path.isfile('all_casinos_combined.csv'), index=False)
 else:
     print("\nНа жаль, список порожній.")
